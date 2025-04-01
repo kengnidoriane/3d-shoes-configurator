@@ -12,6 +12,7 @@ import ColorPicker from "./Components/ColorPicker";
 import Insect from "./Components/Models/Insect";
 import Teapot from "./Components/Models/Teapot";
 import CatalogPage from "./Components/CatalogPage";
+import CustomizationPage from "./Components/CustomizationPage";
 import { AiOutlineStar, AiFillStar } from "react-icons/ai";
 
 const RocketState = proxy({
@@ -174,7 +175,7 @@ function App() {
     <Router>
     <Routes>
       <Route path="/" element={<CatalogPage />} />
-      {/* <Route path="/customize/:modelId" element={<CustomizationPage />} /> */}
+      <Route path="/customize/:modelId" element={<CustomizationPage />} />
     </Routes>
   </Router>
     // <>
