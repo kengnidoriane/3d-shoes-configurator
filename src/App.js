@@ -2,14 +2,14 @@ import { React, Suspense, useState, useRef } from "react";
 import { Canvas } from "@react-three/fiber";
 import { OrbitControls, Float } from "@react-three/drei";
 import { proxy } from "valtio";
-import Shoe from "./Components/Shoe";
-import Rocket from "./Components/Rocket";
-import Axe from "./Components/Axe";
+import Shoe from "./Components/Models/Shoe";
+import Rocket from "./Components/Models/Rocket";
+import Axe from "./Components/Models/Axe";
 import Loader from "./Components/Loader";
 import ModelPicker from "./Components/ModelPicker";
 import ColorPicker from "./Components/ColorPicker";
-import Insect from "./Components/Insect";
-import Teapot from "./Components/Teapot";
+import Insect from "./Components/Models/Insect";
+import Teapot from "./Components/Models/Teapot";
 import { AiOutlineStar, AiFillStar } from "react-icons/ai";
 
 const RocketState = proxy({
