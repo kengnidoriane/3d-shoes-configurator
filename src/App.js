@@ -1,4 +1,5 @@
 import { React, Suspense, useState, useRef } from "react";
+import { BrowserRouter as Router, Routes, Route } from "react-router-dom";
 import { Canvas } from "@react-three/fiber";
 import { OrbitControls, Float } from "@react-three/drei";
 import { proxy } from "valtio";
@@ -10,6 +11,7 @@ import ModelPicker from "./Components/ModelPicker";
 import ColorPicker from "./Components/ColorPicker";
 import Insect from "./Components/Models/Insect";
 import Teapot from "./Components/Models/Teapot";
+import CatalogPage from "./Components/CatalogPage";
 import { AiOutlineStar, AiFillStar } from "react-icons/ai";
 
 const RocketState = proxy({
@@ -169,54 +171,60 @@ function App() {
   };
 
   return (
-    <>
-      <ModelPicker updateSelectedModel={updateSelectedModel} />
-      {renderSelectedColorPicker()}
-      <Canvas shadows camera={{ position: [1, 0, 2] }}>
-        <ambientLight />
-        <spotLight
-          intensity={0.5}
-          penumbra={1}
-          position={[7, 15, 10]}
-          castShadow
-        />
-        <mesh
-          receiveShadow
-          rotation={[-Math.PI / 2, 0, 1.1]}
-          position={[0, -1, 0]}
-        >
-          <planeGeometry args={[100, 100]} />
-          <shadowMaterial opacity={0.3} />
-        </mesh>
-        <Suspense fallback={<Loader />}>
-          <Float
-            speed={1}
-            rotationIntensity={1}
-            floatIntensity={1}
-            floatingRange={[0, 0.3]}
-          >
-            {renderSelectedModel()}
-          </Float>
-        </Suspense>
-        <OrbitControls ref={controls} maxDistance={5} minDistance={1.5} />
-      </Canvas>
-      <div className="info-icon">
-        <div
-          className="holder"
-          onClick={() => {
-            setLinkOpened(true);
-            window.open("https://github.com/Madewill/3d-product-configurator.git");
-          }}
-        >
-          {linkOpened ? (
-            <AiFillStar color="#a8a8a8" size={24} />
-          ) : (
-            <AiOutlineStar color="#a8a8a8" size={24} />
-          )}
-          <span>Madewill/3d-product-configurator</span>
-        </div>
-      </div>
-    </>
+    <Router>
+    <Routes>
+      <Route path="/" element={<CatalogPage />} />
+      {/* <Route path="/customize/:modelId" element={<CustomizationPage />} /> */}
+    </Routes>
+  </Router>
+    // <>
+    //   <ModelPicker updateSelectedModel={updateSelectedModel} />
+    //   {renderSelectedColorPicker()}
+    //   <Canvas shadows camera={{ position: [1, 0, 2] }}>
+    //     <ambientLight />
+    //     <spotLight
+    //       intensity={0.5}
+    //       penumbra={1}
+    //       position={[7, 15, 10]}
+    //       castShadow
+    //     />
+    //     <mesh
+    //       receiveShadow
+    //       rotation={[-Math.PI / 2, 0, 1.1]}
+    //       position={[0, -1, 0]}
+    //     >
+    //       <planeGeometry args={[100, 100]} />
+    //       <shadowMaterial opacity={0.3} />
+    //     </mesh>
+    //     <Suspense fallback={<Loader />}>
+    //       <Float
+    //         speed={1}
+    //         rotationIntensity={1}
+    //         floatIntensity={1}
+    //         floatingRange={[0, 0.3]}
+    //       >
+    //         {renderSelectedModel()}
+    //       </Float>
+    //     </Suspense>
+    //     <OrbitControls ref={controls} maxDistance={5} minDistance={1.5} />
+    //   </Canvas>
+    //   <div className="info-icon">
+    //     <div
+    //       className="holder"
+    //       onClick={() => {
+    //         setLinkOpened(true);
+    //         window.open("https://github.com/Madewill/3d-product-configurator.git");
+    //       }}
+    //     >
+    //       {linkOpened ? (
+    //         <AiFillStar color="#a8a8a8" size={24} />
+    //       ) : (
+    //         <AiOutlineStar color="#a8a8a8" size={24} />
+    //       )}
+    //       <span>Madewill/3d-product-configurator</span>
+    //     </div>
+    //   </div>
+    // </>
   );
 }
 
