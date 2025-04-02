@@ -67,7 +67,7 @@ const ModelViewer = ({ modelId, modelState, snap, animating, onUpdateSelectedPar
   };
 
   return (
-    <div className="w-full md:w-2/3 h-1/2 md:h-full relative">
+    <div className="w-full h-full">
       <Canvas shadows>
         <PerspectiveCamera makeDefault position={[1, 0, 2]} ref={cameraRef} />
         <ambientLight intensity={0.7} />
@@ -116,7 +116,7 @@ const ModelViewer = ({ modelId, modelState, snap, animating, onUpdateSelectedPar
             transition={{ duration: 0.3 }}
             className="absolute top-4 left-4 bg-white px-4 py-2 rounded-md shadow-lg"
           >
-            Partie sélectionnée: {snap.parts[snap.current]?.name || snap.current}
+            Selected part: {snap.parts[snap.current]?.name || snap.current}
           </motion.div>
         )}
       </AnimatePresence>
