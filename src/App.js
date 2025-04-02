@@ -1,7 +1,7 @@
 import React from "react";
 import { BrowserRouter as Router, Routes, Route } from "react-router-dom";
 import CatalogPage from "./Components/CatalogPage";
-import CustomizationPage from "./Components/CustomizationPage";
+import CustomizationPage from "./Components/CustomizationPage.jsx";
 import CustomizePage from "./Components/CustomizePage";
 // import Navbar from "./components/Navbar";
 
