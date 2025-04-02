@@ -1,4 +1,4 @@
-import { React, useState, useEffect } from "react";
+import React, { useState, useEffect } from "react";
 import { useGLTF } from "@react-three/drei";
 import { useSnapshot } from "valtio";
 
@@ -15,7 +15,7 @@ export default function Shoe(props) {
       )}'), auto`;
     }
     return () => (document.body.style.cursor = "auto");
-  }, [hovered]);
+  }, [hovered, snap]);
 
   return (
     <group
@@ -39,52 +39,44 @@ export default function Shoe(props) {
       }}
     >
       <mesh
-        castShadow
-        material-color={snap.laces}
         geometry={nodes.shoe.geometry}
         material={materials.laces}
+        material-color={snap.laces}
       />
       <mesh
-        castShadow
-        material-color={snap.mesh}
         geometry={nodes.shoe_1.geometry}
         material={materials.mesh}
+        material-color={snap.mesh}
       />
       <mesh
-        castShadow
-        material-color={snap.caps}
         geometry={nodes.shoe_2.geometry}
         material={materials.caps}
+        material-color={snap.caps}
       />
       <mesh
-        castShadow
-        material-color={snap.inner}
         geometry={nodes.shoe_3.geometry}
         material={materials.inner}
+        material-color={snap.inner}
       />
       <mesh
-        castShadow
-        material-color={snap.sole}
         geometry={nodes.shoe_4.geometry}
         material={materials.sole}
+        material-color={snap.sole}
       />
       <mesh
-        castShadow
-        material-color={snap.stripes}
         geometry={nodes.shoe_5.geometry}
         material={materials.stripes}
+        material-color={snap.stripes}
       />
       <mesh
-        castShadow
-        material-color={snap.band}
         geometry={nodes.shoe_6.geometry}
         material={materials.band}
+        material-color={snap.band}
       />
       <mesh
-        castShadow
-        material-color={snap.patch}
         geometry={nodes.shoe_7.geometry}
         material={materials.patch}
+        material-color={snap.patch}
       />
     </group>
   );

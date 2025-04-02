@@ -1,4 +1,4 @@
-import { React, useState, useEffect } from "react";
+import React, { useState, useEffect } from "react";
 import { useGLTF } from "@react-three/drei";
 import { useSnapshot } from "valtio";
 
@@ -15,7 +15,7 @@ export default function Teapot(props) {
       )}'), auto`;
     }
     return () => (document.body.style.cursor = "auto");
-  }, [hovered]);
+  }, [hovered, snap]);
 
   return (
     <group
