@@ -13,6 +13,7 @@ const CustomizationPage = () => {
   const [selectedPart, setSelectedPart] = useState(null);
   const [animating, setAnimating] = useState(false);
   const [isPanelOpen, setIsPanelOpen] = useState(true);
+  const [panelHeight, setPanelHeight] = useState("2/5")
   
   // Utiliser l'état correspondant au modèle sélectionné
   const modelState = modelStateMap[modelId];
@@ -68,30 +69,11 @@ const CustomizationPage = () => {
 
   // Toggle pour le panneau de personnalisation
   const togglePanel = () => {
-    setIsPanelOpen(!isPanelOpen);
+    setPanelHeight(prev => prev === "2/5" ? "1/5" : "2/5")
   };
 
   return (
     <div className="h-screen flex flex-col overflow-hidden">
-      {/* Barre supérieure avec bouton retour et titre */}
-      {/* <div className="bg-white shadow-sm p-4 flex items-center">
-        <button 
-          onClick={handleBackToCatalog}
-          className="mr-4 px-3 py-1 rounded-md hover:bg-gray-100"
-        >
-          ← Retour
-        </button>
-        <h1 className="text-xl font-semibold">
-          Personnalisation {
-            modelId === 'shoe' ? 'de chaussure' : 
-            modelId === 'rocket' ? 'de fusée' : 
-            modelId === 'axe' ? 'de hache' : 
-            modelId === 'insect' ? 'd\'insecte' : 'de théière'
-          }
-        </h1>
-      </div> */}
-      
-      {/* Zone principale avec le modèle 3D */}
       <div className="flex-grow relative">
         <ModelViewer 
           modelId={modelId}
@@ -112,7 +94,6 @@ const CustomizationPage = () => {
           </div>
         </div>
 
-        {/* Panneau de personnalisation en bas */}
         <AnimatePresence>
           {isPanelOpen && (
             <motion.div
@@ -120,8 +101,8 @@ const CustomizationPage = () => {
               animate={{ y: 0 }}
               exit={{ y: "100%" }}
               transition={{ type: "spring", damping: 20 }}
-              className="absolute bottom-0 left-0 right-0 bg-white shadow-lg z-10"
-              style={{ height: "33.333%" }}
+              className="absolute bottom-0 left-0 right-0 bg-white shadow-lg"
+            //   style={{ height: "33.333%" }}
             >
               <CustomizationPanel 
                 snap={snap}

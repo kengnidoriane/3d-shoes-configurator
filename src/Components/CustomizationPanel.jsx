@@ -100,7 +100,7 @@ const CustomizationPanel = ({ snap, modelState, onColorChange, onAddToCart }) =>
             key={index}
             whileHover={{ scale: 1.1 }}
             whileTap={{ scale: 0.95 }}
-            className="w-8 h-8 rounded-full cursor-pointer border-2"
+            className="w-7 h-7 rounded-full cursor-pointer border-2"
             style={{ 
               backgroundColor: color,
               borderColor: color === currentPart.color ? "#000" : "transparent"
