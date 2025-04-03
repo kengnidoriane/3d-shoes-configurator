@@ -1,6 +1,6 @@
 import React, { Suspense, useRef } from "react";
 import { Canvas } from "@react-three/fiber";
-import { OrbitControls, Float, PerspectiveCamera } from "@react-three/drei";
+import { OrbitControls, PerspectiveCamera } from "@react-three/drei";
 import { motion, AnimatePresence } from "framer-motion";
 import Shoe from "./Models/Shoe";
 import Rocket from "./Models/Rocket";

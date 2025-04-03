@@ -60,9 +60,9 @@ const CustomizationPanel = ({ snap, modelState, onColorChange, onAddToCart }) =>
   const currentPart = availableParts[currentPartIndex] || { id: "", name: "", color: "#ffffff" };
 
   return (
-    <div className="h-2/5 p-4 flex flex-col">
+    <div className="h-2/5 p-4 flex flex-col bg-slate-100">
       {/* Prix total */}
-      <div className="flex justify-between items-center mb-4">
+      {/* <div className="flex justify-between items-center mb-4">
         <div>
           <p className="text-sm text-gray-500">Prix de base: {snap.basePrice?.toFixed(2) || "0.00"} €</p>
           <p className="text-sm text-gray-500">Personnalisation: +{snap.customizationPrice?.toFixed(2) || "0.00"} €</p>
@@ -70,10 +70,10 @@ const CustomizationPanel = ({ snap, modelState, onColorChange, onAddToCart }) =>
         <div className="text-lg font-bold">
           Total: {((snap.basePrice || 0) + (snap.customizationPrice || 0)).toFixed(2)} €
         </div>
-      </div>
+      </div> */}
 
       {/* Sélecteur de partie avec navigation */}
-      <div className="flex items-center justify-center mb-4">
+      <div className="flex w-1/2 mx-auto mb-4">
         <button 
           onClick={goToPreviousPart}
           className="p-2 rounded-full hover:bg-gray-100"
