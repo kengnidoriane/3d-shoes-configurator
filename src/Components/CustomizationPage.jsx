@@ -72,9 +72,9 @@ const CustomizationPage = () => {
   };
 
   return (
-    <div className="h-screen flex flex-col">
+    <div className="h-screen flex flex-col overflow-hidden">
       {/* Barre supérieure avec bouton retour et titre */}
-      <div className="bg-white shadow-sm p-4 flex items-center">
+      {/* <div className="bg-white shadow-sm p-4 flex items-center">
         <button 
           onClick={handleBackToCatalog}
           className="mr-4 px-3 py-1 rounded-md hover:bg-gray-100"
@@ -89,7 +89,7 @@ const CustomizationPage = () => {
             modelId === 'insect' ? 'd\'insecte' : 'de théière'
           }
         </h1>
-      </div>
+      </div> */}
       
       {/* Zone principale avec le modèle 3D */}
       <div className="flex-grow relative">

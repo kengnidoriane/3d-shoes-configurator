@@ -40,34 +40,60 @@ const ModelViewer = ({ modelId, modelState, snap, animating, onUpdateSelectedPar
   const animateToSelectedPart = (part) => {
     if (!part || !controls.current) return;
     
-    // Définir des positions de caméra spécifiques pour chaque partie
-    let targetPosition;
+    let targetPosition, lookAtTarget;
     
     switch (modelId) {
       case 'shoe':
-        if (part === 'sole') targetPosition = [0, -0.5, 2];
-        else if (part === 'laces') targetPosition = [0, 0.5, 2];
-        else targetPosition = [1, 0, 2];
+        switch (part) {
+          case 'sole':
+            targetPosition = [0, -0.5, 2];
+            lookAtTarget = [0, -0.5, 0];
+            break;
+          case 'laces':
+            targetPosition = [0, 0.5, 2];
+            lookAtTarget = [0, 0.5, 0];
+            break;
+          default:
+            targetPosition = [1, 0, 2];
+            lookAtTarget = [0, 0, 0];
+        }
         break;
+      
       case 'rocket':
-        if (part === 'base') targetPosition = [0.5, -1, 1];
-        else if (part === 'tip') targetPosition = [0.5, 1, 1];
-        else targetPosition = [1, 0, 2];
+        switch (part) {
+          case 'base':
+            targetPosition = [0.5, -1, 1];
+            lookAtTarget = [0.5, -1, 0];
+            break;
+          case 'tip':
+            targetPosition = [0.5, 1, 1];
+            lookAtTarget = [0.5, 1, 0];
+            break;
+          default:
+            targetPosition = [1, 0, 2];
+            lookAtTarget = [0, 0, 0];
+        }
         break;
+      
       default:
         targetPosition = [1, 0, 2];
+        lookAtTarget = [0, 0, 0];
     }
     
-    // Animer la caméra vers la nouvelle position
+    // Utilisation de setLookAt avec des paramètres plus précis
     controls.current.setLookAt(
-      targetPosition[0], targetPosition[1], targetPosition[2],
-      0, 0, 0,
-      true // animate
+      targetPosition[0],   // Position x de la caméra
+      targetPosition[1],   // Position y de la caméra
+      targetPosition[2],   // Position z de la caméra
+      lookAtTarget[0],     // Point de visée x
+      lookAtTarget[1],     // Point de visée y
+      lookAtTarget[2],     // Point de visée z
+      true                 // Activer l'animation
     );
   };
 
   return (
-    <div className="w-full h-full">
+    <div className="w-full h-3/5">
       <Canvas shadows>
         <PerspectiveCamera makeDefault position={[1, 0, 2]} ref={cameraRef} />
         <ambientLight intensity={0.7} />
@@ -86,14 +112,9 @@ const ModelViewer = ({ modelId, modelState, snap, animating, onUpdateSelectedPar
           <shadowMaterial opacity={0.3} />
         </mesh>
         <Suspense fallback={<Loader />}>
-          <Float
-            speed={1}
-            rotationIntensity={animating ? 0.2 : 1}
-            floatIntensity={animating ? 0.2 : 1}
-            floatingRange={[0, 0.3]}
-          >
+        
             {getModelComponent()}
-          </Float>
+          
         </Suspense>
         <OrbitControls 
           ref={controls} 

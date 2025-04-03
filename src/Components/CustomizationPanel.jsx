@@ -60,7 +60,7 @@ const CustomizationPanel = ({ snap, modelState, onColorChange, onAddToCart }) =>
   const currentPart = availableParts[currentPartIndex] || { id: "", name: "", color: "#ffffff" };
 
   return (
-    <div className="h-full p-4 flex flex-col">
+    <div className="h-2/5 p-4 flex flex-col">
       {/* Prix total */}
       <div className="flex justify-between items-center mb-4">
         <div>
@@ -80,11 +80,11 @@ const CustomizationPanel = ({ snap, modelState, onColorChange, onAddToCart }) =>
         >
           <ChevronLeft size={24} />
         </button>
-        
+
         <div className="flex-grow text-center">
           <h3 className="text-lg font-medium">{currentPart.name}</h3>
         </div>
-        
+
         <button 
           onClick={goToNextPart}
           className="p-2 rounded-full hover:bg-gray-100"
