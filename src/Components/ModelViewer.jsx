@@ -116,10 +116,10 @@ const ModelViewer = ({ modelId, modelState, snap, animating, onUpdateSelectedPar
             {getModelComponent()}
           
         </Suspense>
-        <OrbitControls 
-          ref={controls} 
-          maxDistance={5} 
-          minDistance={1.5} 
+        <OrbitControls
+          ref={controls}
+          maxDistance={5}
+          minDistance={1.5}
           enablePan={false}
           enableZoom={!animating}
           enableRotate={!animating}

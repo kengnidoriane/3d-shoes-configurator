@@ -53,15 +53,15 @@ const CustomizationPage = () => {
   // Fonction pour mettre à jour la couleur d'une partie
   const updateColorForPart = (part, color) => {
     if (!part || !modelState) return;
-    
+
     // Mettre à jour la couleur dans l'objet colors
     modelState.colors[part] = color;
-    
+
     // Mettre également à jour la couleur dans l'objet parts
     if (modelState.parts[part]) {
       modelState.parts[part].color = color;
     }
-    
+
     // Ajouter 2€ pour chaque changement de couleur
     modelState.customizationPrice += 2;
   };
