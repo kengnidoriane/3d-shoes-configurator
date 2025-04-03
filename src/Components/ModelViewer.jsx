@@ -14,8 +14,7 @@ const ModelViewer = ({ modelId, modelState, snap, animating, onUpdateSelectedPar
   const cameraRef = useRef();
 
   const getModelComponent = () => {
-    // S'assurer que colors est initialisé avant de le passer
-    const colors = snap.colors || {};
+    const colors = snap.colors;
     
     const updateCurrent = (value) => {
       onUpdateSelectedPart(value);

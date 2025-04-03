@@ -60,11 +60,11 @@ const CustomizationPanel = ({ snap, modelState, onColorChange, onAddToCart, OnTo
   const currentPart = availableParts[currentPartIndex] || { id: "", name: "", color: "#ffffff" };
 
   return (
-    <div className=" relative h-2/5 p-4 flex flex-col bg-slate-100">
+    <div className=" relative h-2/5 p-4 flex flex-col bg-gray-200">
 
           {/* Bouton de toggle intégré */}
-          <button type="button" className="absolute top-8 left-10 transform -translate-x-1/2 
-                   bg-white rounded-t-full shadow-lg cursor-pointer z-10 
+          <button type="button" className="absolute top-8 left-10 transform -translate-x-1/2
+                   bg-white rounded-t-full shadow-lg cursor-pointer z-10
                    px-4 py-1 flex items-center"
         onClick={OnTogglePanel}
       >
