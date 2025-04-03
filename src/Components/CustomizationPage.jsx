@@ -83,19 +83,8 @@ const CustomizationPage = () => {
           onUpdateSelectedPart={handleUpdateSelectedPart}
         />
 
-        {/* Bouton pour afficher/masquer le panneau */}
-        <div 
-          className="absolute bottom-0 left-1/2 transform -translate-x-1/2 bg-white rounded-t-lg shadow-lg cursor-pointer z-10"
-          onClick={togglePanel}
-        >
-          <div className="flex items-center justify-center px-6 py-2">
-            {isPanelOpen ? <ChevronDown size={20} /> : <ChevronUp size={20} />}
-            <span className="ml-2 font-medium">{isPanelOpen ? "Masquer les options" : "Afficher les options"}</span>
-          </div>
-        </div>
 
         <AnimatePresence>
-          {isPanelOpen && (
             <motion.div
               initial={{ y: "100%" }}
               animate={{ y: 0 }}
@@ -109,9 +98,10 @@ const CustomizationPage = () => {
                 modelState={modelState}
                 onColorChange={(color) => updateColorForPart(snap.current, color)}
                 onAddToCart={handleAddToCart}
+                OnTogglePanel={togglePanel}
+                isCompact={panelHeight === "1/5"}
               />
             </motion.div>
-          )}
         </AnimatePresence>
       </div>
     </div>

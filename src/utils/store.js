@@ -16,13 +16,13 @@ const shoeState = proxy({
     patch: "#ffffff",
   },
   parts: {
-    laces: { name: "Lacets", color: "#ffffff" },
-    mesh: { name: "Maille", color: "#ffffff" },
-    caps: { name: "Embouts", color: "#ffffff" },
-    inner: { name: "Intérieur", color: "#ffffff" },
-    sole: { name: "Semelle", color: "#ffffff" },
-    stripes: { name: "Bandes", color: "#ffffff" },
-    band: { name: "Bandeau", color: "#ffffff" },
+    laces: { name: "Laces", color: "#ffffff" },
+    mesh: { name: "Mesh", color: "#ffffff" },
+    caps: { name: "Caps", color: "#ffffff" },
+    inner: { name: "Inner", color: "#ffffff" },
+    sole: { name: "Sole", color: "#ffffff" },
+    stripes: { name: "Stripes", color: "#ffffff" },
+    band: { name: "Band", color: "#ffffff" },
     patch: { name: "Patch", color: "#ffffff" },
   },
   presets: {
@@ -72,11 +72,11 @@ const rocketState = proxy({
     window: "#a8a8a8",
   },
   parts: {
-    hull: { name: "Coque", color: "#4287f5" },
+    hull: { name: "Hull", color: "#4287f5" },
     base: { name: "Base", color: "#d3d3d3" },
-    tip: { name: "Pointe", color: "#d3d3d3" },
-    wings: { name: "Ailes", color: "#a8a8a8" },
-    window: { name: "Fenêtre", color: "#a8a8a8" },
+    tip: { name: "Tip", color: "#d3d3d3" },
+    wings: { name: "Wings", color: "#a8a8a8" },
+    window: { name: "Window", color: "#a8a8a8" },
   },
   presets: {
     Space: {
@@ -152,8 +152,8 @@ const insectState = proxy({
     shell: "#a8a8a8" 
   },
   parts: {
-    body: { name: "Corps", color: "#d3d3d3" },
-    shell: { name: "Carapace", color: "#a8a8a8" },
+    body: { name: "Body", color: "#d3d3d3" },
+    shell: { name: "Shell", color: "#a8a8a8" },
   },
   presets: {
     Nature: {
@@ -176,12 +176,12 @@ const teapotState = proxy({
   current: null,
   basePrice: 89.99,
   customizationPrice: 0,
-  colors: { 
-    lid: "#d3d3d3", 
-    base: "#a8a8a8" 
+  colors: {
+    lid: "#d3d3d3",
+    base: "#a8a8a8"
   },
   parts: {
-    lid: { name: "Couvercle", color: "#d3d3d3" },
+    lid: { name: "Lid", color: "#d3d3d3" },
     base: { name: "Base", color: "#a8a8a8" },
   },
   presets: {
@@ -224,12 +224,11 @@ export const initializePartColors = (state) => {
 // Appliquer un préréglage de couleurs
 export const applyPreset = (state, preset) => {
   if (!preset) return;
-  
   // Appliquer les couleurs du préréglage
   Object.entries(preset).forEach(([part, color]) => {
     if (state.colors[part]) {
       state.colors[part] = color;
-      
+
       // Mettre à jour la couleur dans l'objet parts
       if (state.parts && state.parts[part]) {
         state.parts[part].color = color;
