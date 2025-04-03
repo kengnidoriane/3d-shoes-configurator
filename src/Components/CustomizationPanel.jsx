@@ -2,7 +2,7 @@ import React, { useState, useEffect } from "react";
 import { motion } from "framer-motion";
 import { ChevronLeft, ChevronRight, ShoppingCart, ChevronDown, ChevronUp } from "lucide-react";
 
-const CustomizationPanel = ({ snap, modelState, onColorChange, onAddToCart, OnTogglePanel, isCompact = false }) => {
+const CustomizationPanel = ({ snap, modelState, onColorChange, onAddToCart, OnTogglePanel, isCompact = true }) => {
   const [currentPartIndex, setCurrentPartIndex] = useState(0);
   const [availableParts, setAvailableParts] = useState([]);
   
