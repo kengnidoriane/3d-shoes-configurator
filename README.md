@@ -11,7 +11,7 @@ The application follows a component-based architecture using React. The main com
 
 1. **CustomizationPage**: The main container component that manages the overall state and layout.
 2. **ModelViewer**: Handles the 3D rendering and interaction with the model.
-3. **BottomCustomizationPanel**: Provides the UI for selecting parts and colors.
+3. **CustomizationPanel**: Provides the UI for selecting parts and colors.
 4. **Model Components**: Individual 3D model components (Shoe, Rocket, Insect, Teapot, Axe).
 
 ## Key Features
