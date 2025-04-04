@@ -9,7 +9,7 @@ import Insect from "./Models/Insect";
 import Teapot from "./Models/Teapot";
 import Loader from "./Loader";
 
-const ModelViewer = ({ modelId, modelState, snap, animating, onUpdateSelectedPart }) => {
+const ModelViewer = ({ modelId, modelState, snap, animating, onUpdateSelectedPart, isCompact = false }) => {
   const controls = useRef();
   const cameraRef = useRef();
 
@@ -92,7 +92,7 @@ const ModelViewer = ({ modelId, modelState, snap, animating, onUpdateSelectedPar
   };
 
   return (
-    <div className="w-full h-3/5">
+    <div className={`w-full ${isCompact ? 'h-4/5' : 'h-3/5'}`}>
       <Canvas shadows>
         <PerspectiveCamera makeDefault position={[1, 0, 2]} ref={cameraRef} />
         <ambientLight intensity={0.7} />
@@ -126,7 +126,7 @@ const ModelViewer = ({ modelId, modelState, snap, animating, onUpdateSelectedPar
       </Canvas>
 
       {/* Indicateur de partie sélectionnée */}
-      <AnimatePresence>
+      {/* <AnimatePresence>
         {snap.current && (
           <motion.div
             key={snap.current}
@@ -139,7 +139,7 @@ const ModelViewer = ({ modelId, modelState, snap, animating, onUpdateSelectedPar
             Selected part: {snap.parts[snap.current]?.name || snap.current}
           </motion.div>
         )}
-      </AnimatePresence>
+      </AnimatePresence> */}
     </div>
   );
 };

@@ -74,13 +74,14 @@ const CustomizationPage = () => {
 
   return (
     <div className="h-screen flex flex-col overflow-hidden">
-      <div className="flex-grow relative">
+      
         <ModelViewer 
           modelId={modelId}
           modelState={modelState}
           snap={snap}
           animating={animating}
           onUpdateSelectedPart={handleUpdateSelectedPart}
+          isCompact={panelHeight === "1/5"}
         />
 
 
@@ -103,7 +104,7 @@ const CustomizationPage = () => {
               />
             </motion.div>
         </AnimatePresence>
-      </div>
+      
     </div>
   );
 };

@@ -115,10 +115,10 @@ const axeState = proxy({
     inner: "#d3d3d3",
   },
   parts: {
-    body: { name: "Corps", color: "#a8a8a8" },
+    body: { name: "Body", color: "#a8a8a8" },
     design: { name: "Design", color: "#d3d3d3" },
     support: { name: "Support", color: "#d3d3d3" },
-    inner: { name: "Intérieur", color: "#d3d3d3" },
+    inner: { name: "Inner", color: "#d3d3d3" },
   },
   presets: {
     Warrior: {
@@ -147,9 +147,9 @@ const insectState = proxy({
   current: null,
   basePrice: 59.99,
   customizationPrice: 0,
-  colors: { 
-    body: "#d3d3d3", 
-    shell: "#a8a8a8" 
+  colors: {
+    body: "#d3d3d3",
+    shell: "#a8a8a8"
   },
   parts: {
     body: { name: "Body", color: "#d3d3d3" },

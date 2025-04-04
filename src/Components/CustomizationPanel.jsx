@@ -2,7 +2,7 @@ import React, { useState, useEffect } from "react";
 import { motion } from "framer-motion";
 import { ChevronLeft, ChevronRight, ShoppingCart, ChevronDown, ChevronUp } from "lucide-react";
 
-const CustomizationPanel = ({ snap, modelState, onColorChange, onAddToCart, OnTogglePanel, isCompact = true }) => {
+const CustomizationPanel = ({ snap, modelState, onColorChange, onAddToCart, OnTogglePanel, isCompact = false }) => {
   const [currentPartIndex, setCurrentPartIndex] = useState(0);
   const [availableParts, setAvailableParts] = useState([]);
   
@@ -60,7 +60,7 @@ const CustomizationPanel = ({ snap, modelState, onColorChange, onAddToCart, OnTo
   const currentPart = availableParts[currentPartIndex] || { id: "", name: "", color: "#ffffff" };
 
   return (
-    <div className=" relative h-2/5 p-4 flex flex-col bg-gray-200">
+    <div className={ `relative ${isCompact ? 'h-1/5' : 'h-2/5'} p-4 flex flex-col bg-gray-200`}>
 
           {/* Bouton de toggle intégré */}
           <button type="button" className="absolute top-8 left-10 transform -translate-x-1/2
@@ -76,6 +76,29 @@ const CustomizationPanel = ({ snap, modelState, onColorChange, onAddToCart, OnTo
       </button>
       {isCompact ? (
         <div>
+        <div className="flex  w-1/2 mx-auto mb-4">
+         <button 
+           onClick={goToPreviousPart}
+           className="p-2 rounded-full hover:bg-gray-100"
+         >
+           <ChevronLeft size={24} />
+         </button>
+
+         <div className="flex-grow text-center">
+           <h3 className="text-lg font-medium">{currentPart.name}</h3>
+         </div>
+
+         <button 
+           onClick={goToNextPart}
+           className="p-2 rounded-full hover:bg-gray-100"
+         >
+           <ChevronRight size={24} />
+         </button>
+       </div>
+     </div>
+        
+      ) : (
+        <div className="flex flex-col justify-center items-center">
                {/* Sélecteur de partie avec navigation */}
           <div className="flex w-1/2 mx-auto mb-4">
             <button 
@@ -117,33 +140,11 @@ const CustomizationPanel = ({ snap, modelState, onColorChange, onAddToCart, OnTo
           {/* Bouton d'ajout au panier */}
           <button
             onClick={onAddToCart}
-            className="mt-auto py-3 bg-blue-600 text-white rounded-lg hover:bg-blue-700 transition-colors font-semibold flex items-center justify-center"
+            className="mt-auto py-3 bg-blue-600 text-white rounded-lg hover:bg-blue-700 transition-colors font-semibold flex items-center justify-center p-3"
           >
             <ShoppingCart size={20} className="mr-2" />
             Ajouter au panier - {((snap.basePrice || 0) + (snap.customizationPrice || 0)).toFixed(2)} €
           </button>
-        </div>
-      ) : (
-        <div>
-           <div className="flex w-1/2 mx-auto mb-4">
-            <button 
-              onClick={goToPreviousPart}
-              className="p-2 rounded-full hover:bg-gray-100"
-            >
-              <ChevronLeft size={24} />
-            </button>
-
-            <div className="flex-grow text-center">
-              <h3 className="text-lg font-medium">{currentPart.name}</h3>
-            </div>
-
-            <button 
-              onClick={goToNextPart}
-              className="p-2 rounded-full hover:bg-gray-100"
-            >
-              <ChevronRight size={24} />
-            </button>
-          </div>
         </div>
       )}
       {/* Prix total */}
