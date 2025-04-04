@@ -8,10 +8,9 @@ const CustomizationPanel = ({ snap, modelState, onColorChange, onAddToCart, OnTo
   
   // Couleurs prédéfinies pour la personnalisation
   const predefinedColors = [
-    "#ff0000", "#0000ff", "#ffff00", "#000000", "#888888", "#ff8800"
+    "#FAD02E", "#FF6B6B", "#4ECDC4", "#FF9F1C", "#1A535C", "#CBE896", "#6BCB77", "#E6E6FA"
   ];
 
-  // Initialiser les parties disponibles
   useEffect(() => {
     if (snap.parts) {
       const parts = Object.entries(snap.parts).map(([id, part]) => ({
@@ -98,7 +97,7 @@ const CustomizationPanel = ({ snap, modelState, onColorChange, onAddToCart, OnTo
      </div>
         
       ) : (
-        <div className="flex flex-col justify-center items-center">
+        <div className="flex flex-col justify-center items-center gap-4">
                {/* Sélecteur de partie avec navigation */}
           <div className="flex w-1/2 mx-auto mb-4">
             <button 
@@ -121,7 +120,7 @@ const CustomizationPanel = ({ snap, modelState, onColorChange, onAddToCart, OnTo
           </div>
 
           {/* Palette de couleurs */}
-          <div className="w-1/4 m-auto grid justify-center grid-cols-6 gap-3  mb-6">
+          <div className=" w-full max-w-md mx-auto grid grid-cols-8 gap-2 sm:gap-3 px-4 mb-6">
             {predefinedColors.map((color, index) => (
               <motion.div
                 key={index}
@@ -143,7 +142,7 @@ const CustomizationPanel = ({ snap, modelState, onColorChange, onAddToCart, OnTo
             className="mt-auto py-3 bg-blue-600 text-white rounded-lg hover:bg-blue-700 transition-colors font-semibold flex items-center justify-center p-3"
           >
             <ShoppingCart size={20} className="mr-2" />
-            Ajouter au panier - {((snap.basePrice || 0) + (snap.customizationPrice || 0)).toFixed(2)} €
+            Add to cart - {((snap.basePrice || 0) + (snap.customizationPrice || 0)).toFixed(2)} €
           </button>
         </div>
       )}

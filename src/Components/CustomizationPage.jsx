@@ -36,7 +36,7 @@ const CustomizationPage = () => {
 
   // Ajouter au panier (simulation)
   const handleAddToCart = () => {
-    alert(`Produit ajouté au panier! Prix total: ${(snap.basePrice + snap.customizationPrice).toFixed(2)} €`);
+    alert(`Product added to cart! Total Price: ${(snap.basePrice + snap.customizationPrice).toFixed(2)} €`);
   };
 
   // Fonction pour mettre à jour la partie sélectionnée
@@ -83,9 +83,16 @@ const CustomizationPage = () => {
           onUpdateSelectedPart={handleUpdateSelectedPart}
           isCompact={panelHeight === "1/5"}
         />
+        <CustomizationPanel 
+                snap={snap}
+                modelState={modelState}
+                onColorChange={(color) => updateColorForPart(snap.current, color)}
+                onAddToCart={handleAddToCart}
+                OnTogglePanel={togglePanel}
+                isCompact={panelHeight === "1/5"}
+              />
 
-
-        <AnimatePresence>
+        {/* <AnimatePresence>
             <motion.div
               initial={{ y: "100%" }}
               animate={{ y: 0 }}
@@ -94,16 +101,9 @@ const CustomizationPage = () => {
               className="absolute bottom-0 left-0 right-0 bg-white shadow-lg"
             //   style={{ height: "33.333%" }}
             >
-              <CustomizationPanel 
-                snap={snap}
-                modelState={modelState}
-                onColorChange={(color) => updateColorForPart(snap.current, color)}
-                onAddToCart={handleAddToCart}
-                OnTogglePanel={togglePanel}
-                isCompact={panelHeight === "1/5"}
-              />
+              
             </motion.div>
-        </AnimatePresence>
+        </AnimatePresence> */}
       
     </div>
   );
